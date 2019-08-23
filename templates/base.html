@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/cadastro.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/tabela.css' %}" type="text/css">
+        <title>Projeto1</title>
+    </head>
+    <body>
+        <header>
+            <div class="row">
+                    <div class="col-md-1"><img src="img/m.jpg" class="imagem"></div>
+                    <div class="col-md-11">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="navbar-nav">
+                                    {% if user.is_authenticated %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                                    </li>
+                                    {% endif %}
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#">Produtos</a>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{% url 'create_product' %}">Adicionar Produto</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+        <footer>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <h3>Acesse nossas redes sociais</h3>
+                        <div class="icones">
+                        <span class="fab fa-facebook"></span>
+                        <span class="fab fa-instagram"></span>
+                        <span class="fab fa-twitter"></span>
+                        <span class="fab fa-linkedin-in iconefinal"></span>
+                    </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </footer>
+    </body>	
+</html>

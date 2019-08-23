@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<table class="tabela">
+				<colgroup>
+					<col width="10%">
+					<col width="15%">
+					<col width="15%">
+					<col width="15%">
+					<col width="15%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th colspan="6">Lista de Produtos</th>
+					</tr>
+					<tr>
+						<th></th>
+						<th>Produto</th>
+						<th>Preço</th>
+						<th>Qtd/Embalagem</th>
+						<th>Qtd em Estoque</th>
+					</tr>
+				</thead>
+				<tbody align="Center">
+					{% for product in products %}
+					<tr>
+						<td><a href="{% url 'product' name=product.name %}"><img src="{{ product.image.url }}"></a></td>
+						<td>{{ product.name }}</td>
+						<td>R${{ product.price }}</td>
+						<td>{{ product.weight }}g</td>
+						<td>{{ product.storage }} unidades</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6 principal">
+			<h2 class="mensagem">Cadastre-se para ver nossos produtos</h2>
+			<form class="site-form" action="/submit/" method="POST">
+				{% csrf_token %}
+				{{ form }}
+				<br>
+				<input type="submit" class="btn btn-primary botao" value="Cadastrar-me">
+			</form>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+	{% endblock %}
